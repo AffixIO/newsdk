@@ -17,6 +17,11 @@ jobs:
       - run: npm install
       - name: Health check
         env:
-          AFFIX_API_KEY: ${{ secrets.AFFIX_API_KEY || 'aio_1b51ae929fb4ac1e78e6d5f61ab50262a4302dedbfd9b583' }}
+          AFFIX_API_KEY: ${{ secrets.AFFIX_API_KEY }}
           AFFIX_API_BASE: https://api.affix-io.com
-        run: node dist/cli.js health
+        run: |
+          if [ -z "${AFFIX_API_KEY}" ]; then
+            echo "Skipping live health (set repository secret AFFIX_API_KEY)"
+            exit 0
+          fi
+          node dist/cli.js health

@@ -1,0 +1,28 @@
+name: AffixIO Verify Proof
+description: Verify an AffixIO zero-knowledge proof in CI before deploy
+inputs:
+  api_key:
+    description: AffixIO API key
+    required: true
+  circuit_id:
+    description: Noir circuit id
+    required: true
+    default: yesno
+  proof:
+    description: Proof hex or path to a JSON/proof file
+    required: true
+  api_base:
+    description: API base URL
+    required: false
+    default: https://api.affix-io.com
+runs:
+  using: composite
+  steps:
+    - name: Verify proof
+      shell: bash
+      env:
+        AFFIX_API_KEY: ${{ inputs.api_key }}
+        AFFIX_API_BASE: ${{ inputs.api_base }}
+        AFFIX_CIRCUIT_ID: ${{ inputs.circuit_id }}
+        AFFIX_PROOF: ${{ inputs.proof }}
+      run: node "${{ github.action_path }}/verify.mjs"
