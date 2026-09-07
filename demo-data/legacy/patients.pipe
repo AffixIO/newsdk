@@ -1,0 +1,5 @@
+#id|status|ward|site
+PIPE-01|in_ed|AE01|GGH
+PIPE-02|waiting|OPD|WGH
+PIPE-03|in_ed|MAU|BGH
+PIPE-04|discharged|HOME|GGH

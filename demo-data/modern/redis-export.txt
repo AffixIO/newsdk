@@ -1,0 +1,3 @@
+SET R-1001 {"status":"in_ed","ward":"A&E","site":"GGH"}
+SET R-1002 {"status":"held","ward":"MAU","site":"BGH"}
+R-1003 status=transferred ward=Ward3 site=WGH

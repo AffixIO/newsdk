@@ -1,12 +1,83 @@
 {
-  "name": "@affix-io/sdk",
-  "version": "2.0.3",
-  "description": "Post-quantum zero-knowledge proof SDK for Node.js. Noir circuits, ML-DSA-65 attestation, Barretenberg UltraHonk proving, verifiable credentials, and privacy-preserving KYC.",
-  "license": "Apache-2.0",
+  "name": "affixio",
+  "version": "1.3.2",
+  "description": "AffixIO Node.js SDK. Know Your Agent (KYA) first, local ops dashboard, licence-only proving, HMAC/UltraHonk, ML-DSA-65, Merkle audit. Defaults to api.affix-io.com.",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "homepage": "https://github.com/AffixIO/SDK",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./agent-trust": {
+      "types": "./dist/agent-trust/index.d.ts",
+      "import": "./dist/agent-trust/index.js",
+      "default": "./dist/agent-trust/index.js"
+    }
+  },
+  "bin": {
+    "affixio": "./dist/cli.js",
+    "affix-sdk": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "node --input-type=module -e \"await import('./dist/index.js')\"",
+    "setup": "node dist/cli.js setup",
+    "menu": "node dist/cli.js menu"
+  },
+  "keywords": [
+    "affix",
+    "affixio",
+    "know-your-agent",
+    "kya",
+    "agent-trust",
+    "sdk",
+    "local-ops-dashboard",
+    "enterprise",
+    "ai-agent-governance",
+    "agent-identity",
+    "zero-knowledge",
+    "zkp",
+    "zk-proofs",
+    "ultrahonk",
+    "noir",
+    "barretenberg",
+    "post-quantum",
+    "pqc",
+    "ml-dsa",
+    "ml-dsa-65",
+    "fips-204",
+    "dilithium",
+    "attestation",
+    "merkle",
+    "merkle-tree",
+    "privacy-preserving",
+    "verifiable-credentials",
+    "compliance",
+    "crypto-agility",
+    "offline-first",
+    "pluggable-storage",
+    "qr-code",
+    "barcode",
+    "data-check",
+    "audit-trail",
+    "licence-only",
+    "on-premise",
+    "air-gapped",
+    "hsm",
+    "pkcs11",
+    "kms",
+    "double-spend",
+    "hash-chain",
+    "tamper-evident"
+  ],
+  "author": "AffixIO",
+  "contributors": [
+    "@paparichens"
+  ],
+  "license": "Apache-2.0",
+  "homepage": "https://www.affix-io.com/agent-trust/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AffixIO/SDK.git"
@@ -14,68 +85,31 @@
   "bugs": {
     "url": "https://github.com/AffixIO/SDK/issues"
   },
-  "keywords": [
-    "post-quantum-cryptography",
-    "post-quantum",
-    "quantum-safe",
-    "quantum-resistant",
-    "zero-knowledge",
-    "zero-knowledge-proofs",
-    "zkp",
-    "zk-snark",
-    "snark",
-    "noir",
-    "noir-lang",
-    "barretenberg",
-    "ultrahonk",
-    "ml-dsa",
-    "fips-204",
-    "fips-203",
-    "fips-205",
-    "crystals-dilithium",
-    "privacy-preserving",
-    "verifiable-credentials",
-    "attestation",
-    "kyc",
-    "identity",
-    "merkle",
-    "proof",
-    "prove",
-    "verify",
-    "nodejs",
-    "typescript",
-    "affixio"
-  ],
-  "files": [
-    "dist",
-    "certs",
-    ".env.example",
-    "README.md",
-    "LICENSE",
-    "NOTICE",
-    "SECURITY.md",
-    "CONTRIBUTING.md",
-    "AUTHORS"
-  ],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
-  },
-  "bin": {
-    "affix-sdk": "./dist/cli.js",
-    "affix-sdk-web": "./dist/cli.js"
-  },
-  "scripts": {
-    "start": "node dist/cli.js"
-  },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org"
+    "access": "public"
   },
-  "dependencies": {}
+  "files": [
+    "dist",
+    "circuits",
+    "certs",
+    "demo-data",
+    "examples",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@aztec/bb.js": "5.0.0-nightly.20260601",
+    "@noble/post-quantum": "^0.4.1",
+    "@noir-lang/noir_js": "1.0.0-beta.22",
+    "bwip-js": "^4.5.1",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/qrcode": "^1.5.5",
+    "typescript": "^5.7.3"
+  }
 }

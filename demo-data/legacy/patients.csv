@@ -1,0 +1,5 @@
+id,status,ward,site,episode
+C-2001,in_ed,A&E,GGH,E1
+C-2002,transferred,Ward 3,WGH,E2
+C-2003,in_ed,Resus,GGH,E3
+C-2004,discharged,Discharge Lounge,BGH,E4

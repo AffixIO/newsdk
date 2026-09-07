@@ -1,0 +1,18 @@
+{
+  "KV-01": {
+    "status": "approved",
+    "pathway": "elective",
+    "board": "hywel_dda"
+  },
+  "KV-02": {
+    "status": "declined",
+    "pathway": "emergency",
+    "board": "hywel_dda"
+  },
+  "KV-03": "held",
+  "KV-04": {
+    "claim": "yes",
+    "required_mirror": "yes",
+    "clinic": "pentre_awel"
+  }
+}

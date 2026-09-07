@@ -1,0 +1,16 @@
+[
+  {
+    "_id": { "$oid": "65a1b2c3d4e5f67890123401" },
+    "id": "M-101",
+    "status": "in_ed",
+    "ward": "A&E",
+    "site": "GGH"
+  },
+  {
+    "_id": { "$oid": "65a1b2c3d4e5f67890123402" },
+    "id": "M-102",
+    "status": "discharged",
+    "ward": "Ward 2",
+    "site": "WGH"
+  }
+]

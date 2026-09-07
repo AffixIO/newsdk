@@ -1,0 +1,12 @@
+# LDIF demo
+dn: uid=L-701,ou=patients,o=nhs
+uid: L-701
+status: in_ed
+ward: A&E
+site: GGH
+
+dn: uid=L-702,ou=patients,o=nhs
+uid: L-702
+status: waiting
+ward: OPD
+site: WGH

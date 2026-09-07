@@ -1,0 +1,23 @@
+[
+  {
+    "id": "P-1001",
+    "status": "in_ed",
+    "ward": "A&E",
+    "site": "GGH",
+    "nhs_number": "943 476 5919"
+  },
+  {
+    "id": "P-1002",
+    "status": "discharged",
+    "ward": "Ward 7",
+    "site": "WGH",
+    "nhs_number": "401 023 2137"
+  },
+  {
+    "id": "P-1003",
+    "status": "in_ed",
+    "ward": "MAU",
+    "site": "BGH",
+    "nhs_number": "687 654 3210"
+  }
+]

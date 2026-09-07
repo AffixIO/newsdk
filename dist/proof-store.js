@@ -1,44 +1,34 @@
-import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
-import { dirname } from "node:path";
+import { docGet, docSet, STORAGE_KEYS } from "./storage/index.js";
 export class ProofStore {
-    path;
-    constructor(path) {
-        this.path = path;
+    docs;
+    max;
+    key;
+    constructor(docs, max = 50_000, key = STORAGE_KEYS.proofs) {
+        this.docs = docs;
+        this.max = max;
+        this.key = key;
     }
-    read() {
-        if (!existsSync(this.path)) {
-            return { proofs: [] };
-        }
+    async read() {
+        const raw = await docGet(this.docs, this.key);
+        if (!raw)
+            return [];
         try {
-            return JSON.parse(readFileSync(this.path, "utf8"));
+            const parsed = JSON.parse(raw);
+            return Array.isArray(parsed) ? parsed : [];
         }
         catch {
-            return { proofs: [] };
+            return [];
         }
     }
-    write(data) {
-        mkdirSync(dirname(this.path), { recursive: true });
-        writeFileSync(this.path, JSON.stringify(data, null, 2));
+    async write(items) {
+        await docSet(this.docs, this.key, JSON.stringify(items.slice(0, this.max), null, 2));
     }
-    save(proof) {
-        const data = this.read();
-        data.proofs.unshift(proof);
-        data.proofs = data.proofs.slice(0, 500);
-        this.write(data);
+    async save(proof) {
+        const items = (await this.read()).filter((p) => p.proof_id !== proof.proof_id);
+        items.unshift(proof);
+        await this.write(items);
     }
-    list() {
-        return this.read().proofs;
-    }
-    markSynced(proof_id, merkle_root) {
-        const data = this.read();
-        for (const proof of data.proofs) {
-            if (proof.proof_id === proof_id) {
-                proof.synced = true;
-                if (merkle_root) {
-                    proof.merkle_root = merkle_root;
-                }
-            }
-        }
-        this.write(data);
+    async list() {
+        return this.read();
     }
 }

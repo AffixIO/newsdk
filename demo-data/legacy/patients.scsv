@@ -1,0 +1,4 @@
+id;status;ward;site
+S-901;in_ed;A&E;GGH
+S-902;transferred;Ward 5;WGH
+S-903;in_ed;Resus;BGH

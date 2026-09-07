@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<patients>
+  <patient>
+    <id>X-501</id>
+    <status>in_ed</status>
+    <ward>A&amp;E</ward>
+    <site>GGH</site>
+  </patient>
+  <patient>
+    <id>X-502</id>
+    <status>discharged</status>
+    <ward>Ward 4</ward>
+    <site>WGH</site>
+  </patient>
+</patients>
